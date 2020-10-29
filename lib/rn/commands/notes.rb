@@ -2,6 +2,7 @@ module RN
   module Commands
     module Notes
       class Create < Dry::CLI::Command
+        DIR_RNS = "#{Dir.home}/.my_rns/"
         desc 'Create a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -12,10 +13,31 @@ module RN
           '"New note" --book "My book" # Creates a note titled "New note" in the book "My book"',
           'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoires"'
         ]
+        #PARSEA EL TEXTO ELIMINANDO LOS 3 PRIMEROS PARAMETROS N CREATE Y EL TITULO DE LA NOTA
+        def separate()
+          text = ""
+          3.times {ARGV.delete_at(0)}
+          ARGV.each do |element|
+             if element != "-b" #MEJORAR IMPLEMENTACION, Y AGREGAR --BOOK. UTILIZAR EXPREGS?
+               text << element + " "
+             else
+               return text
+             end
+          end
+          text
+        end
 
+        #crea la nota con un titulo, un contenido si se lo envia, hasta que se presione enter
+        #o reciba un libro como parametro
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar creación de la nota con título '#{title}' (en el libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            print "ya existe una nota con ese titulo\n"
+          else
+            f = File.write(route,separate())
+            print "la nota con titulo '#{title}' fue creada con exito (en el libro '#{book}')\n"
+          end
         end
       end
 
