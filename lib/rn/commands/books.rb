@@ -1,6 +1,7 @@
 module RN
   module Commands
     module Books
+      DIR_RNS = "#{Dir.home}/.my_rns/"
       class Create < Dry::CLI::Command
         desc 'Create a book'
 
@@ -12,7 +13,13 @@ module RN
         ]
 
         def call(name:, **)
-          warn "TODO: Implementar creación del cuaderno de notas con nombre '#{name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}#{"#{name}" if name}"
+          if Dir.exist?(route)
+            print "ya existe una libro con ese nombre\n"
+          else
+            Dir.mkdir(route)
+            print "el libro con nombre '#{name}' fue creada con exito\n"
+          end
         end
       end
 
@@ -29,8 +36,13 @@ module RN
         ]
 
         def call(name: nil, **options)
-          global = options[:global]
-          warn "TODO: Implementar borrado del cuaderno de notas con nombre '#{name}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}#{"#{name}" if name}"
+          if Dir.exist?(route)
+            Dir.rmdir(route)
+            print "el libro con nombre '#{name}' fue borrado con exito\n"
+          else
+            print "no existe una libro con ese nombre\n"
+          end
         end
       end
 
@@ -42,7 +54,8 @@ module RN
         ]
 
         def call(*)
-          warn "TODO: Implementar listado de los cuadernos de notas.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}"
+          Dir.foreach(route) {|f| puts "#{f}"} #mejorar el orden
         end
       end
 

@@ -1,8 +1,8 @@
 module RN
   module Commands
     module Notes
+      DIR_RNS = "#{Dir.home}/.my_rns/"
       class Create < Dry::CLI::Command
-        DIR_RNS = "#{Dir.home}/.my_rns/"
         desc 'Create a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -18,7 +18,7 @@ module RN
           text = ""
           3.times {ARGV.delete_at(0)}
           ARGV.each do |element|
-             if element != "-b" #MEJORAR IMPLEMENTACION, Y AGREGAR --BOOK. UTILIZAR EXPREGS?
+             if element != "-b" #MEJORAR IMPLEMENTACION, Y AGREGAR --BOOK. regexp?
                text << element + " "
              else
                return text
@@ -52,10 +52,15 @@ module RN
           '"New note" --book "My book" # Deletes a note titled "New note" from the book "My book"',
           'thoughts --book Memoires    # Deletes a note titled "thoughts" from the book "Memoires"'
         ]
-
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar borrado de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            File.delete(route)
+            print "la nota con titulo '#{title}' fue eliminada con exito (en el libro '#{book}') \n"
+          else
+            print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
+          end
         end
       end
 
