@@ -55,7 +55,18 @@ module RN
 
         def call(*)
           route = "#{DIR_RNS}"
-          Dir.foreach(route) {|f| puts "#{f}"} #mejorar el orden
+          Dir.foreach(route) do |f|
+            next if f == "." or f ==".."
+            routedir= "#{DIR_RNS}#{f}"
+            if File.directory?(routedir)
+              Dir.foreach(routedir) do |b|
+                next if b == "." or b ==".."
+                puts "#{b} in #{routedir}"
+              end
+            else
+            puts "#{f}<-- in global"
+            end
+          end
         end
       end
 
@@ -72,7 +83,18 @@ module RN
         ]
 
         def call(old_name:, new_name:, **)
-          warn "TODO: Implementar renombrado del cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          routeOld = "#{DIR_RNS}#{"#{old_name}" if old_name}"
+          routeNew = "#{DIR_RNS}#{"#{new_name}" if new_name}"
+          if !Dir.exist?(routeOld)
+             print "el libro '#{old_name}' no existe \n"
+             return
+          end
+          if Dir.exist?(routeNew)
+             print "ya existe otro libro con nombre '#{new_name}', eliga otro nombre.\n"
+             return
+          end
+          File.rename(routeOld,routeNew)
+          print "El nombre de la nota '#{old_name}' fue modificado a '#{new_name}' con exito.\n"
         end
       end
     end

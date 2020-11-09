@@ -18,7 +18,7 @@ module RN
           text = ""
           3.times {ARGV.delete_at(0)}
           ARGV.each do |element|
-             if element != "-b" #MEJORAR IMPLEMENTACION, Y AGREGAR --BOOK. regexp?
+             if element != "--book" and element !="-b" #MEJORAR IMPLEMENTACION, Y AGREGAR --BOOK. regexp?
                text << element + " "
              else
                return text
@@ -35,7 +35,7 @@ module RN
           if File.exist?(route)
             print "ya existe una nota con ese titulo\n"
           else
-            f = File.write(route,separate())
+            File.write(route,separate())
             print "la nota con titulo '#{title}' fue creada con exito (en el libro '#{book}')\n"
           end
         end
@@ -97,7 +97,18 @@ module RN
 
         def call(old_title:, new_title:, **options)
           book = options[:book]
-          warn "TODO: Implementar cambio del título de la nota con título '#{old_title}' hacia '#{new_title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          routeOld = "#{DIR_RNS}#{"#{book}/" if book}#{old_title}.rn"
+          routeNew = "#{DIR_RNS}#{"#{book}/" if book}#{new_title}.rn"
+          if !File.exist?(routeOld)
+             print "la nota con titulo '#{old_title}' no existe (en el libro '#{book}')\n"
+             return
+          end
+          if File.exist?(routeNew)
+             print "ya existe otra nota con el nuevo titulo '#{new_title}'(en el libro '#{book}'), eliga otro nombre.\n"
+             return
+          end
+          File.rename(routeOld,routeNew)
+          print "El nombre de la nota '#{old_title}' fue modificado a '#{new_title}' con exito.\n"
         end
       end
 
