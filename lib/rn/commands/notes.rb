@@ -79,6 +79,10 @@ module RN
         def call(title:, **options)
           book = options[:book]
           warn "TODO: Implementar modificación de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+
+
+
+
         end
       end
 
@@ -125,11 +129,49 @@ module RN
           '--book Memoires  # Lists notes from the book named "Memoires"'
         ]
 
+
+        def printGlobal(route)
+          Dir.foreach(route) do |f|
+            next if f == "." or f ==".."
+            routedir= "#{DIR_RNS}#{f}"
+            if File.directory?(routedir)
+              Dir.foreach(routedir) do |b|
+                next if b == "." or b ==".."
+                puts "#{b} in #{routedir}"
+              end
+            else
+              puts "#{f} <-- in global"
+            end
+          end
+        end
+
+
+        def printRoute(route)
+          Dir.foreach(route) do |f|
+            next if f == "." or f ==".."
+            if File.file?("#{route}#{f}")
+              puts "#{f}"
+            end
+          end
+        end
+
+
         def call(**options)
           book = options[:book]
           global = options[:global]
-          warn "TODO: Implementar listado de las notas del libro '#{book}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}"
+          if book
+            route = "#{DIR_RNS}#{book}/"
+            printRoute (route)
+          elsif global
+            route = "#{DIR_RNS}"
+            printRoute (route)
+          else
+            route = "#{DIR_RNS}"
+            printGlobal(route)
+          end
         end
+
       end
 
       class Show < Dry::CLI::Command
@@ -146,7 +188,9 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar vista de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          puts File.read(route)
+
         end
       end
     end

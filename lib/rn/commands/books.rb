@@ -56,20 +56,15 @@ module RN
         def call(*)
           route = "#{DIR_RNS}"
           Dir.foreach(route) do |f|
-            next if f == "." or f ==".."
             routedir= "#{DIR_RNS}#{f}"
             if File.directory?(routedir)
-              Dir.foreach(routedir) do |b|
-                next if b == "." or b ==".."
-                puts "#{b} in #{routedir}"
-              end
-            else
-            puts "#{f}<-- in global"
+              next if f == "." or f ==".."
+              puts "#{f}"
             end
           end
         end
-      end
 
+      end
       class Rename < Dry::CLI::Command
         desc 'Rename a book'
 
