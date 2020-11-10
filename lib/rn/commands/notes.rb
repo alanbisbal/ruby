@@ -77,12 +77,14 @@ module RN
         ]
 
         def call(title:, **options)
+
           book = options[:book]
-          warn "TODO: Implementar modificación de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
-
-
-
-
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            TTY::Editor.open(route)
+          else
+            print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
+          end
         end
       end
 
