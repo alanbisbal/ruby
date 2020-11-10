@@ -1,6 +1,7 @@
 module RN
   module Commands
     module Books
+      DIR_RNS = "#{Dir.home}/.my_rns/"
       class Create < Dry::CLI::Command
         desc 'Create a book'
 
@@ -12,7 +13,13 @@ module RN
         ]
 
         def call(name:, **)
-          warn "TODO: Implementar creación del cuaderno de notas con nombre '#{name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}#{"#{name}" if name}"
+          if Dir.exist?(route)
+            print "ya existe una libro con ese nombre\n"
+          else
+            Dir.mkdir(route)
+            print "el libro con nombre '#{name}' fue creada con exito\n"
+          end
         end
       end
 
@@ -29,8 +36,13 @@ module RN
         ]
 
         def call(name: nil, **options)
-          global = options[:global]
-          warn "TODO: Implementar borrado del cuaderno de notas con nombre '#{name}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}#{"#{name}" if name}"
+          if Dir.exist?(route)
+            Dir.rmdir(route)
+            print "el libro con nombre '#{name}' fue borrado con exito\n"
+          else
+            print "no existe una libro con ese nombre\n"
+          end
         end
       end
 
@@ -42,10 +54,17 @@ module RN
         ]
 
         def call(*)
-          warn "TODO: Implementar listado de los cuadernos de notas.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          route = "#{DIR_RNS}"
+          Dir.foreach(route) do |f|
+            routedir= "#{DIR_RNS}#{f}"
+            if File.directory?(routedir)
+              next if f == "." or f ==".."
+              puts "#{f}"
+            end
+          end
         end
-      end
 
+      end
       class Rename < Dry::CLI::Command
         desc 'Rename a book'
 
@@ -59,7 +78,18 @@ module RN
         ]
 
         def call(old_name:, new_name:, **)
-          warn "TODO: Implementar renombrado del cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          routeOld = "#{DIR_RNS}#{"#{old_name}" if old_name}"
+          routeNew = "#{DIR_RNS}#{"#{new_name}" if new_name}"
+          if !Dir.exist?(routeOld)
+             print "el libro '#{old_name}' no existe \n"
+             return
+          end
+          if Dir.exist?(routeNew)
+             print "ya existe otro libro con nombre '#{new_name}', eliga otro nombre.\n"
+             return
+          end
+          File.rename(routeOld,routeNew)
+          print "El nombre de la nota '#{old_name}' fue modificado a '#{new_name}' con exito.\n"
         end
       end
     end
