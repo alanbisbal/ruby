@@ -23,5 +23,9 @@ module RN
     end
 
     register 'version', Version, aliases: ['v', '-v', '--version']
+    globalcontent = "#{Dir.home}/.my_rns/"
+    if !File.exist?(globalcontent)
+      Dir.mkdir(globalcontent)
+    end
   end
 end

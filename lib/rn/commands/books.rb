@@ -13,13 +13,8 @@ module RN
         ]
 
         def call(name:, **)
-          route = "#{DIR_RNS}#{"#{name}" if name}"
-          if Dir.exist?(route)
-            print "ya existe una libro con ese nombre\n"
-          else
-            Dir.mkdir(route)
-            print "el libro con nombre '#{name}' fue creada con exito\n"
-          end
+          b = Book.new
+          b.create(name)
         end
       end
 
@@ -36,13 +31,8 @@ module RN
         ]
 
         def call(name: nil, **options)
-          route = "#{DIR_RNS}#{"#{name}" if name}"
-          if Dir.exist?(route)
-            Dir.rmdir(route)
-            print "el libro con nombre '#{name}' fue borrado con exito\n"
-          else
-            print "no existe una libro con ese nombre\n"
-          end
+          b = Book.new
+          b.delete(name)
         end
       end
 
@@ -54,14 +44,8 @@ module RN
         ]
 
         def call(*)
-          route = "#{DIR_RNS}"
-          Dir.foreach(route) do |f|
-            routedir= "#{DIR_RNS}#{f}"
-            if File.directory?(routedir)
-              next if f == "." or f ==".."
-              puts "#{f}"
-            end
-          end
+          b = Book.new
+          b.list()
         end
 
       end
@@ -78,18 +62,8 @@ module RN
         ]
 
         def call(old_name:, new_name:, **)
-          routeOld = "#{DIR_RNS}#{"#{old_name}" if old_name}"
-          routeNew = "#{DIR_RNS}#{"#{new_name}" if new_name}"
-          if !Dir.exist?(routeOld)
-             print "el libro '#{old_name}' no existe \n"
-             return
-          end
-          if Dir.exist?(routeNew)
-             print "ya existe otro libro con nombre '#{new_name}', eliga otro nombre.\n"
-             return
-          end
-          File.rename(routeOld,routeNew)
-          print "El nombre de la nota '#{old_name}' fue modificado a '#{new_name}' con exito.\n"
+          b = Book.new
+          b.rename(old_name,new_name)
         end
       end
     end
