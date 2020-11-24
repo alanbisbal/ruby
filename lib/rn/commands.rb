@@ -28,5 +28,11 @@ module RN
     if !File.exist?(globalcontent)
       Dir.mkdir(globalcontent)
     end
+    exports = "#{Dir.home}/exports/"
+    if !File.exist?(exports)
+      Dir.mkdir(exports)
+    end
+
+
   end
 end

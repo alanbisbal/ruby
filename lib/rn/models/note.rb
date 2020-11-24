@@ -109,9 +109,24 @@ class Note
   end #END SHOW
 
 
+  def obtainText(title,book)
+    route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+    if !File.exist?(route)
+       print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
+    else
+       File.read(route)
+    end
+  end #END SHOW
 
-  def export()
 
+  def export(title,doc)
+    route = "#{Dir.home}/exports/#{title}.html"
+    if !File.exist?(route)
+      File.write(route,doc)
+      puts("el archivo con titulo #{title} fue exportado con exito en #{route}")
+    else
+      puts ("ya existe un archivo html con el mismo titulo")
+    end
   end
   ###END EXPORT
 

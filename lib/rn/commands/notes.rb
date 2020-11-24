@@ -124,6 +124,7 @@ module RN
       class Export < Dry::CLI::Command
         desc 'Export notes'
 
+        argument :title, required: true, desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
         option :global, type: :boolean, default: false, desc: 'Export only notes from the global book'
 
@@ -135,12 +136,13 @@ module RN
         ]
 
 
-        def call(**options)
+        def call(title:, **options)
           book = options[:book]
           global = options[:global]
-          puts "se realiza la implementacion a partir de la linea #{__LINE__} en #{__FILE__}"
-
-
+          n = Note.new
+          content = n.obtainText(title,book)
+          doc = Markdown.new(content).to_html
+          n.export(title,doc)
         end
 
 
