@@ -46,7 +46,7 @@ class Note
       print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
     end
   end
-  ###END DELETE
+  ###END EDIT
 
   def retitle(new_title,old_title,book)
     routeOld = "#{DIR_RNS}#{"#{book}/" if book}#{old_title}.rn"
@@ -61,7 +61,7 @@ class Note
     end
     File.rename(routeOld,routeNew)
     print "El nombre de la nota '#{old_title}' fue modificado a '#{new_title}' con exito.\n"
-  end #ENDRETITLE
+  end #END RETITLE
 
   def printGlobal(route)
     Dir.foreach(route) do |f|
@@ -76,7 +76,7 @@ class Note
         puts "#{f} ---- global"
       end
     end
-  end #ENDPRINTGLOBAL
+  end #END PRINTGLOBAL
 
 
   def printRoute(route)
@@ -86,7 +86,7 @@ class Note
         puts "#{f}"
       end
     end
-  end #ENDROUTE
+  end #END ROUTE
 
   def list(book,global)
     route = "#{DIR_RNS}"
@@ -100,12 +100,19 @@ class Note
       route = "#{DIR_RNS}"
       printGlobal(route)
     end
-  end #ENDLIST
+  end #END LIST
 
 
   def show(title,book)
     route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
     puts File.read(route)
+  end #END SHOW
+
+
+
+  def export()
+
   end
+  ###END EXPORT
 
 end

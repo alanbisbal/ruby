@@ -119,6 +119,36 @@ module RN
           n.show(title,book)
         end
       end
+
+
+      class Export < Dry::CLI::Command
+        desc 'Export notes'
+
+        option :book, type: :string, desc: 'Book'
+        option :global, type: :boolean, default: false, desc: 'Export only notes from the global book'
+
+        example [
+          '                 # Export notes from all books (including the global book)',
+          '--global         # Export notes from the global book',
+          '--book "My book" # Export notes from the book named "My book"',
+          '--book Memoires  # Export notes from the book named "Memoires"'
+        ]
+
+
+        def call(**options)
+          book = options[:book]
+          global = options[:global]
+          puts "se realiza la implementacion a partir de la linea #{__LINE__} en #{__FILE__}"
+
+
+        end
+
+
+
+      end
+
+
+
     end
   end
 end
