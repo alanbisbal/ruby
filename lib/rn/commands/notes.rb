@@ -1,6 +1,8 @@
 module RN
   module Commands
     module Notes
+
+    DIR_RNS = "#{Dir.home}/.my_rns/"
     class Create < Dry::CLI::Command
         desc 'Create a note'
 
@@ -16,7 +18,13 @@ module RN
         def call(title:, **options)
           book = options[:book]
           n=Note.new()
-          n.create(title,book)
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            print "ya existe una nota con ese titulo\n"
+          else
+            n.create(title,book,route)
+          print "la nota con titulo '#{title}' fue creada con exito (en el libro '#{book}')\n"
+          end
         end
 
       end
@@ -35,7 +43,13 @@ module RN
         def call(title:, **options)
           book = options[:book]
           n = Note.new
-          n.delete(title,book)
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            n.delete(route)
+            print "la nota con titulo '#{title}' fue eliminada con exito (en el libro '#{book}') \n"
+          else
+            print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
+          end
         end
 
       end
@@ -55,7 +69,12 @@ module RN
         def call(title:, **options)
           book = options[:book]
           n = Note.new
-          n.edit(title,book)
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            n.edit(route)
+          else
+            print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
+          end
         end
       end
 
@@ -74,8 +93,19 @@ module RN
 
         def call(old_title:, new_title:, **options)
           book = options[:book]
+          routeOld = "#{DIR_RNS}#{"#{book}/" if book}#{old_title}.rn"
+          routeNew = "#{DIR_RNS}#{"#{book}/" if book}#{new_title}.rn"
+          if !File.exist?(routeOld)
+             print "la nota con titulo '#{old_title}' no existe (en el libro '#{book}')\n"
+             return
+          end
+          if File.exist?(routeNew)
+             print "ya existe otra nota con el nuevo titulo '#{new_title}'(en el libro '#{book}'), eliga otro nombre.\n"
+             return
+          end
           n = Note.new
-          n.retitle(new_title,old_title,book)
+          n.retitle(routeOld,routeNew)
+          print "El nombre de la nota '#{old_title}' fue modificado a '#{new_title}' con exito.\n"
           end
       end
 
@@ -96,9 +126,22 @@ module RN
           book = options[:book]
           global = options[:global]
           n = Note.new
-          n.list(book,global)
+          route = "#{DIR_RNS}"
+          if book
+            route = "#{DIR_RNS}#{book}/"
+            if File.exist?(route)
+              n.listRoute (route)
+            else
+              puts "El libro con nombre #{book} no existe"
+            end
+          elsif global
+            route = "#{DIR_RNS}"
+            n.listRoute (route)
+          else
+            route = "#{DIR_RNS}"
+            n.listGlobal(route)
+          end
         end
-
       end
 
       class Show < Dry::CLI::Command
@@ -116,7 +159,12 @@ module RN
         def call(title:, **options)
           book = options[:book]
           n = Note.new
-          n.show(title,book)
+          route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            n.show(route)
+          else
+            puts "No existe el titulo '#{title}' (en el libro '#{book}')"
+          end
         end
       end
 
@@ -124,33 +172,41 @@ module RN
       class Export < Dry::CLI::Command
         desc 'Export notes'
 
-        argument :title, required: true, desc: 'Title of the note'
+        argument :title,type: :string,desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
-        option :global, type: :boolean, default: false, desc: 'Export only notes from the global book'
+        option :all, type: :boolean, default: false, desc: 'Export all notes from the all books'
 
         example [
-          '                 # Export notes from all books (including the global book)',
-          '--global         # Export notes from the global book',
-          '--book "My book" # Export notes from the book named "My book"',
-          '--book Memoires  # Export notes from the book named "Memoires"'
+          'todo                    # Export one note(including in the global book)',
+          'todo --book Memoires    # Export one note from the book named "Memoires"',
+          '--all                   # Export all notes from all books(including the global book)'
         ]
 
 
-        def call(title:, **options)
+        def call(title:nil,**options)
           book = options[:book]
-          global = options[:global]
+          all = options[:all]
           n = Note.new
-          content = n.obtainText(title,book)
-          doc = Markdown.new(content).to_html
-          n.export(title,doc)
+          if all
+            route = "#{DIR_RNS}"
+            n.exportAll(route)
+            return
+          end
+          if title
+            route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+          if File.exist?(route)
+            n.export(route,title)
+          else
+            puts "no existe una nota con el titulo '#{title}'(en el libro'#{book}')"
+          return
+            end
+          end
+          if book
+            route = "#{DIR_RNS}#{"#{book}/" if book}"
+            n.exportBook(route)
+          end
         end
-
-
-
       end
-
-
-
     end
   end
 end

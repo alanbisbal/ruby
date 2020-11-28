@@ -17,53 +17,25 @@ class Note
   end
 
 
-  def create(title,book)
-      route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
-      if File.exist?(route)
-        print "ya existe una nota con ese titulo\n"
-      else
+  def create(title,book,route)
       File.write(route,separate())
-      print "la nota con titulo '#{title}' fue creada con exito (en el libro '#{book}')\n"
-      end
   end #END CREATE
 
 
-  def delete(title,book)
-    route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
-    if File.exist?(route)
-      File.delete(route)
-      print "la nota con titulo '#{title}' fue eliminada con exito (en el libro '#{book}') \n"
-    else
-      print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
-    end
+  def delete(route)
+    File.delete(route)
   end #END DEL DELETE
 
-  def edit(title,book)
-    route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
-    if File.exist?(route)
-      TTY::Editor.open(route)
-    else
-      print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
-    end
+  def edit(route)
+    TTY::Editor.open(route)
   end
   ###END EDIT
 
-  def retitle(new_title,old_title,book)
-    routeOld = "#{DIR_RNS}#{"#{book}/" if book}#{old_title}.rn"
-    routeNew = "#{DIR_RNS}#{"#{book}/" if book}#{new_title}.rn"
-    if !File.exist?(routeOld)
-       print "la nota con titulo '#{old_title}' no existe (en el libro '#{book}')\n"
-       return
-    end
-    if File.exist?(routeNew)
-       print "ya existe otra nota con el nuevo titulo '#{new_title}'(en el libro '#{book}'), eliga otro nombre.\n"
-       return
-    end
+  def retitle(routeOld,routeNew)
     File.rename(routeOld,routeNew)
-    print "El nombre de la nota '#{old_title}' fue modificado a '#{new_title}' con exito.\n"
   end #END RETITLE
 
-  def printGlobal(route)
+  def listGlobal(route)
     Dir.foreach(route) do |f|
       next if f == "." or f ==".."
       routedir= "#{DIR_RNS}#{f}"
@@ -79,7 +51,7 @@ class Note
   end #END PRINTGLOBAL
 
 
-  def printRoute(route)
+  def listRoute(route)
     Dir.foreach(route) do |f|
       next if f == "." or f ==".."
       if File.file?("#{route}#{f}")
@@ -88,46 +60,64 @@ class Note
     end
   end #END ROUTE
 
-  def list(book,global)
-    route = "#{DIR_RNS}"
-    if book
-      route = "#{DIR_RNS}#{book}/"
-      printRoute (route)
-    elsif global
-      route = "#{DIR_RNS}"
-      printRoute (route)
-    else
-      route = "#{DIR_RNS}"
-      printGlobal(route)
-    end
-  end #END LIST
 
-
-  def show(title,book)
-    route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
+  def show(route)
     puts File.read(route)
   end #END SHOW
 
 
-  def obtainText(title,book)
-    route = "#{DIR_RNS}#{"#{book}/" if book}#{title}.rn"
-    if !File.exist?(route)
-       print "la nota con titulo '#{title}' no existe (en el libro '#{book}')\n"
-    else
-       File.read(route)
-    end
+  def obtainText(route)
+    File.read(route)
   end #END SHOW
 
 
-  def export(title,doc)
-    route = "#{Dir.home}/exports/#{title}.html"
-    if !File.exist?(route)
-      File.write(route,doc)
-      puts("el archivo con titulo #{title} fue exportado con exito en #{route}")
-    else
-      puts ("ya existe un archivo html con el mismo titulo")
-    end
+  def export(route,title)
+
+    content = File.read(route)
+    doc = Markdown.new(content).to_html
+    t = Time.now
+    routeExport = "#{Dir.home}/exports/#{title}(#{t.strftime("%H,%M,%S")}).html"
+    File.write(routeExport,doc)
+    puts("el archivo con titulo #{title} fue exportado con exito en #{routeExport}")
   end
   ###END EXPORT
 
+  def exportAll(route)
+    Dir.foreach(route) do |f|
+      next if f == "." or f ==".."
+      routeDir= "#{DIR_RNS}#{f}"
+      if File.directory?(routeDir)
+        Dir.foreach(routeDir) do |b|
+          routeDirBook = "#{routeDir}/#{b}"
+          next if b == "." or b ==".."
+          content = File.read(routeDirBook)
+          doc = Markdown.new(content).to_html
+          t = Time.now
+          routeExport = "#{Dir.home}/exports/#{b}(from #{f} at #{t.strftime("%H,%M,%S")}).html"
+          File.write(routeExport,doc)
+        end
+      else
+        content = File.read(routeDir)
+        doc = Markdown.new(content).to_html
+        t = Time.now
+        routeExport = "#{Dir.home}/exports/#{f}(from global #{t.strftime("%H,%M,%S")}).html"
+        File.write(routeExport,doc)
+      end
+    end
+  end
+
+
+  def exportBook(route)
+    Dir.foreach(route) do |f|
+      next if f == "." or f ==".."
+      routeDir = "#{route}#{f}"
+      if File.file?(routeDir)
+        content = File.read(routeDir)
+        doc = Markdown.new(content).to_html
+        t = Time.now
+        routeExport = "#{Dir.home}/exports/#{f}(#{t.strftime("%H,%M,%S")}).html"
+        File.write(routeExport,doc)
+      end
+    end
+  end
 end
