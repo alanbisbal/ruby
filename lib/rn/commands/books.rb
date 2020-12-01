@@ -2,7 +2,14 @@ module RN
   module Commands
     module Books
       DIR_RNS = "#{Dir.home}/.my_rns/"
+
+
       class Create < Dry::CLI::Command
+        """
+        Se recibe un nombre como argumento, se crea una instancia de book
+        y le envia el mensaje create con el parametro para su creación
+
+        """
         desc 'Create a book'
 
         argument :name, required: true, desc: 'Name of the book'
@@ -13,17 +20,18 @@ module RN
         ]
 
         def call(name:, **)
-          route = "#{DIR_RNS}#{"#{name}" if name}"
-          if Dir.exist?(route)
-            print "ya existe una libro con ese nombre\n"
-          else
-            Dir.mkdir(route)
-            print "el libro con nombre '#{name}' fue creada con exito\n"
-          end
+          b = Book.new
+          b.create(name)
         end
       end
 
       class Delete < Dry::CLI::Command
+        """
+        se recibe un nombre como argumento opcional, para eliminar todas las notas
+        del mismo, ubicado dentro de la carpeta .my_rns.
+        O puede recibir el argumento --global para eliminar todas las notas del
+        directorio global
+        """
         desc 'Delete a book'
 
         argument :name, required: false, desc: 'Name of the book'
@@ -36,17 +44,15 @@ module RN
         ]
 
         def call(name: nil, **options)
-          route = "#{DIR_RNS}#{"#{name}" if name}"
-          if Dir.exist?(route)
-            Dir.rmdir(route)
-            print "el libro con nombre '#{name}' fue borrado con exito\n"
-          else
-            print "no existe una libro con ese nombre\n"
-          end
+          b = Book.new
+          b.delete(name)
         end
       end
 
       class List < Dry::CLI::Command
+        """
+        Lista todos los libros dentro del directorio .my_rns
+        """
         desc 'List books'
 
         example [
@@ -54,18 +60,16 @@ module RN
         ]
 
         def call(*)
-          route = "#{DIR_RNS}"
-          Dir.foreach(route) do |f|
-            routedir= "#{DIR_RNS}#{f}"
-            if File.directory?(routedir)
-              next if f == "." or f ==".."
-              puts "#{f}"
-            end
-          end
+          b = Book.new
+          b.list()
         end
 
       end
       class Rename < Dry::CLI::Command
+        """
+        recibe un argumento con el nombre del libro a modificar, y el nuevo nombre del libro.
+
+        """
         desc 'Rename a book'
 
         argument :old_name, required: true, desc: 'Current name of the book'
@@ -78,18 +82,8 @@ module RN
         ]
 
         def call(old_name:, new_name:, **)
-          routeOld = "#{DIR_RNS}#{"#{old_name}" if old_name}"
-          routeNew = "#{DIR_RNS}#{"#{new_name}" if new_name}"
-          if !Dir.exist?(routeOld)
-             print "el libro '#{old_name}' no existe \n"
-             return
-          end
-          if Dir.exist?(routeNew)
-             print "ya existe otro libro con nombre '#{new_name}', eliga otro nombre.\n"
-             return
-          end
-          File.rename(routeOld,routeNew)
-          print "El nombre de la nota '#{old_name}' fue modificado a '#{new_name}' con exito.\n"
+          b = Book.new
+          b.rename(old_name,new_name)
         end
       end
     end
