@@ -9,6 +9,10 @@ Este proyecto utiliza Bundler para manejar sus dependencias.
 ```bash
 $ bundle install
 ```
+### Objetivo.
+  Ruby notes, o simplemente rn, es un gestor de notas simple, el cual
+  permite almacenar la informacion de tus notas en texto plano mediante CLI.
+  Tambien permite la creacion de libros, donde podes guardar tus diferentes notas.
 
 ### Manejo del proyecto.
 
@@ -29,10 +33,7 @@ O simplemente:
 ```bash
 $ bin/rn [args]
 ```
-### Objetivo.
-  Ruby notes, o simplemente rn, es un gestor de notas simple, el cual
-  permite almacenar la informacion de tus notas en texto plano mediante CLI.
-  Tambien permite la creacion de libros, donde podes guardar tus diferentes notas.
+
   El proyecto rn cuanta con el siguiente conjunto de funciones:
 
   * note create: permite crear una nota.
