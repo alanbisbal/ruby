@@ -4,6 +4,14 @@ module RN
 
     DIR_RNS = "#{Dir.home}/.my_rns/"
     class Create < Dry::CLI::Command
+        """
+        Se recibe el nombre de la nota(obligatorio), un contenido(opcional)
+        el cual puede ser recibido en una sola linea o en varias lineas utilizando " ".
+        Tambien puede recibir con la opcion --book o -b en que libro desea guardarla,
+        en caso de que el libro exista. Sino será almacenada en el directorio global
+
+        """
+
         desc 'Create a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -30,6 +38,12 @@ module RN
       end
 
       class Delete < Dry::CLI::Command
+        """
+        Se recibe un nombre(obligatorio), con el cual busca y elimina
+        una nota del directorio global.
+        Tambien se puede usar la opcion --book o -b para eliminar la nota de
+        un libro en particular
+        """
         desc 'Delete a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -55,6 +69,12 @@ module RN
       end
 
       class Edit < Dry::CLI::Command
+        """
+        Se recibe el nombre de una nota, y en caso de existir
+        se ofrecerá mediante una gema (tty-editor) con que editor se quiere
+        abrir el archivo.
+        Tambien se puede enviar como opcional en que libro se encuentra la nota .
+        """
         desc 'Edit the content a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -79,6 +99,15 @@ module RN
       end
 
       class Retitle < Dry::CLI::Command
+        """
+        Permite renombrar una nota recibiendo como primer argumento
+        el titulo de la nota a buscar, y como segundo argumento el nuevo
+        nombre de la nota. En caso de que el nuevo titulo ya este en uso
+        por otra nota, entonces se informará que ya existe una nota con ese nombre
+        no se hace nada.
+        Tambien se puede enviar como parametro opcional en que libro se encuentra
+        la nota a renombrar.
+        """
         desc 'Retitle a note'
 
         argument :old_title, required: true, desc: 'Current title of the note'
@@ -110,6 +139,11 @@ module RN
       end
 
       class List < Dry::CLI::Command
+        """
+        Permite listar todas las notas si no se envian parametros(de los libros y globales)
+        o bien, listar solo las notas del directorio global, o listar las notas
+        de un libro en particular.
+        """
         desc 'List notes'
 
         option :book, type: :string, desc: 'Book'
@@ -145,6 +179,12 @@ module RN
       end
 
       class Show < Dry::CLI::Command
+        """
+        Permite mostrar el contenido de una nota en particular
+        recibiendo el titulo de dicha nota como argumento(obligatorio).
+        Tambien se puede enviar en que libro se encuentra esa nota de forma
+        opcional.
+        """
         desc 'Show a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -170,6 +210,15 @@ module RN
 
 
       class Export < Dry::CLI::Command
+        """
+        Permite exportar una nota en particular del libro global,
+        recibiendo por parametro el nombre de la nota.
+        Tambien puede enviarse como opcional en que libro se encuentra la nota.
+        O bien enviando el comando --all exporta todas las notas de todos los libros
+        incluyendo el global.
+        Las notas en formato de texto plano, son convertidas a formatos
+        HTML, haciendo uso de textos ricos implementado con la gema Markdown.
+        """
         desc 'Export notes'
 
         argument :title,type: :string,desc: 'Title of the note'

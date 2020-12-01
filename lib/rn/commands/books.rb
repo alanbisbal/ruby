@@ -2,7 +2,14 @@ module RN
   module Commands
     module Books
       DIR_RNS = "#{Dir.home}/.my_rns/"
+
+
       class Create < Dry::CLI::Command
+        """
+        Se recibe un nombre como argumento, se crea una instancia de book
+        y le envia el mensaje create con el parametro para su creación
+
+        """
         desc 'Create a book'
 
         argument :name, required: true, desc: 'Name of the book'
@@ -19,6 +26,12 @@ module RN
       end
 
       class Delete < Dry::CLI::Command
+        """
+        se recibe un nombre como argumento opcional, para eliminar todas las notas
+        del mismo, ubicado dentro de la carpeta .my_rns.
+        O puede recibir el argumento --global para eliminar todas las notas del
+        directorio global
+        """
         desc 'Delete a book'
 
         argument :name, required: false, desc: 'Name of the book'
@@ -37,6 +50,9 @@ module RN
       end
 
       class List < Dry::CLI::Command
+        """
+        Lista todos los libros dentro del directorio .my_rns
+        """
         desc 'List books'
 
         example [
@@ -50,6 +66,10 @@ module RN
 
       end
       class Rename < Dry::CLI::Command
+        """
+        recibe un argumento con el nombre del libro a modificar, y el nuevo nombre del libro.
+
+        """
         desc 'Rename a book'
 
         argument :old_name, required: true, desc: 'Current name of the book'

@@ -1,10 +1,13 @@
 class Book
   DIR_RNS = "#{Dir.home}/.my_rns/"
   def initialize
-    
+
   end
 
 
+  """
+  Crea un directorio con el nombre recibido por parametro en caso de no existir
+  """
   def create(name)
     route = "#{DIR_RNS}#{"#{name}" if name}"
     if Dir.exist?(route)
@@ -15,6 +18,11 @@ class Book
     end
   end
 
+
+  """
+  Elimina un directorio con el nombre recibido por parametro
+  en caso de existir, y todo su contenido
+  """
   def delete(name)
     route = "#{DIR_RNS}#{"#{name}" if name}"
     if Dir.exist?(route)
@@ -31,6 +39,10 @@ class Book
   end
 
 
+
+  """
+  lista el contenido de archivos de un directorio.
+  """
   def list()
     route = "#{DIR_RNS}"
     Dir.foreach(route) do |f|
@@ -43,6 +55,10 @@ class Book
   end
 
 
+  """
+  Renombra un directorio en caso de existir, mientras el nombre
+  del nuevo directorio no exista previamente.
+  """
   def rename(old_name,new_name)
     routeOld = "#{DIR_RNS}#{"#{old_name}" if old_name}"
     routeNew = "#{DIR_RNS}#{"#{new_name}" if new_name}"
