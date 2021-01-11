@@ -7,6 +7,7 @@
     <div>
       <li>
         Sesión iniciada con <%= current_user.email =%> <br>
+        <%= link_to('My Books', books_path) %> <br>
         <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
       </li>
     </div>
