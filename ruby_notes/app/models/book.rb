@@ -3,7 +3,7 @@ class Book < ApplicationRecord
 
   has_many :notes, inverse_of: :book
 
-  validates :title, presence:true, uniqueness:true, length: {maximum:255 }
+  validates_uniqueness_of :title, presence:true, scope: :user_id, length: {maximum:255 }
 
   def to_s
     title

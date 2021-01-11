@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_01_10_105846) do
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["title"], name: "index_books_on_title", unique: true
+    t.index ["title", "user_id"], name: "index_books_on_title_and_user_id", unique: true
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
