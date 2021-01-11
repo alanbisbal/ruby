@@ -3,4 +3,8 @@
 </div>
 
   <%= yield %>
-<%= link_to('My Books', books_path) %> <br>
+  <% if user_signed_in? %>
+  <div>
+    <%= link_to('My Books', books_path) %> <br>
+  </div>
+  <% end %>
