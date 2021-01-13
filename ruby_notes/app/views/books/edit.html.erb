@@ -1,1 +1,6 @@
-edit del libro
+EDIT BOOK
+<%= form_for(@book) do |form| %>
+  <%= form.label :title, "Title:" %>
+  <%= form.text_field :title %>
+  <%= form.submit "Save" %>
+<% end %>
