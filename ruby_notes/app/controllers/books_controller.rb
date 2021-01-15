@@ -56,7 +56,9 @@ class BooksController < ApplicationController
       redirect_to '/'
     end
     redirect_to '/books'
+  # AGREGAR ELIMINACION EN CASCADA!
   end
+
 
 
 end

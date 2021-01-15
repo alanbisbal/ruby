@@ -1,1 +1,17 @@
-edit note
+EDIT BOOK
+<%= form_for(@note) do |form| %>
+<div>
+  <%= form.label :title, "Title:" %>
+  <%= form.text_field :title %><br>
+</div>
+<div>
+  <%= form.label :content, "Content:" %>
+  <%= form.text_area :content %>
+</div>
+
+<div>
+  <%= form.select :book_id, current_user.books.collect { |b| [b.title,b.id] } %>
+</div>
+
+  <%= form.submit "Save" %>
+<% end %>
