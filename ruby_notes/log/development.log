@@ -16689,3 +16689,420 @@ Processing by BooksController#show as HTML
 Completed 200 OK in 66ms (Views: 40.8ms | ActiveRecord: 0.6ms | Allocations: 10837)
 
 
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-01-17 07:40:10 -0300
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 103ms (ActiveRecord: 0.9ms | Allocations: 9291)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:40:11 -0300
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:40:11 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 6.7ms | Allocations: 611)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 43.6ms | Allocations: 2801)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 111.8ms | Allocations: 17911)
+Completed 200 OK in 129ms (Views: 125.6ms | ActiveRecord: 0.0ms | Allocations: 20468)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:40:17 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"alanbisbal2@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "alanbisbal2@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 496ms (ActiveRecord: 0.3ms | Allocations: 4506)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:40:18 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 131)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 6730)
+Completed 200 OK in 46ms (Views: 24.4ms | ActiveRecord: 0.2ms | Allocations: 8791)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:40:35 -0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 13ms (ActiveRecord: 0.1ms | Allocations: 1430)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:40:35 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.2ms | Allocations: 6620)
+Completed 200 OK in 48ms (Views: 38.7ms | ActiveRecord: 2.3ms | Allocations: 8109)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-01-17 07:40:37 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 15ms (ActiveRecord: 0.1ms | Allocations: 1706)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:40:37 -0300
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 229)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:40:37 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1009)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 7630)
+Completed 200 OK in 50ms (Views: 49.1ms | ActiveRecord: 0.0ms | Allocations: 8219)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:42:49 -0300
+  
+SyntaxError (/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+..._user.books.not_exists? (title:"Global")
+...                         ^~~~~~
+/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+...ks.not_exists? (title:"Global")
+...                              ^
+):
+  
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+config/routes.rb:4:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:42:55 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_in"):
+  
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:43:29 -0300
+  
+SyntaxError (/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+..._user.books.not_exists? (title:"Global")
+...                         ^~~~~~
+/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+...ks.not_exists? (title:"Global")
+...                              ^
+):
+  
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+config/routes.rb:4:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:43:31 -0300
+Processing by HomeController#index as HTML
+Completed 500 Internal Server Error in 3ms (Allocations: 1948)
+
+
+  
+SyntaxError (/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+..._user.books.not_exists? (title:"Global")
+...                         ^~~~~~
+/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+...ks.not_exists? (title:"Global")
+...                              ^
+):
+  
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+Started GET "/books" for 127.0.0.1 at 2021-01-17 07:43:45 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/books"):
+  
+Started GET "/books" for 127.0.0.1 at 2021-01-17 07:43:47 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/books"):
+  
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:43:53 -0300
+Processing by HomeController#index as HTML
+Completed 500 Internal Server Error in 4ms (Allocations: 1374)
+
+
+  
+SyntaxError (/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+..._user.books.not_exists? (title:"Global")
+...                         ^~~~~~
+/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+...ks.not_exists? (title:"Global")
+...                              ^
+):
+  
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:44:22 -0300
+  
+SyntaxError (/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+..._user.books.not_exists? (title:"Global")
+...                         ^~~~~~
+/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+...ks.not_exists? (title:"Global")
+...                              ^
+/home/alan/proyecto/ruby/ruby_notes/app/models/user.rb:14: syntax error, unexpected `end', expecting end-of-input):
+  
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:14: syntax error, unexpected `end', expecting end-of-input
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:14: syntax error, unexpected `end', expecting end-of-input
+app/models/user.rb:10: syntax error, unexpected tLABEL, expecting ')'
+app/models/user.rb:10: syntax error, unexpected ')', expecting `end'
+app/models/user.rb:14: syntax error, unexpected `end', expecting end-of-input
+config/routes.rb:4:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:53:42 -0300
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 2ms (Allocations: 776)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:53:42 -0300
+Processing by Devise::SessionsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 159)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1071)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.0ms | Allocations: 7873)
+Completed 200 OK in 62ms (Views: 31.7ms | ActiveRecord: 1.5ms | Allocations: 13646)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-01-17 07:53:46 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 221)
+  Rendered users/shared/_links.html.erb (Duration: 3.7ms | Allocations: 135)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 11.9ms | Allocations: 1777)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.4ms | Allocations: 8357)
+Completed 200 OK in 96ms (Views: 93.3ms | ActiveRecord: 0.0ms | Allocations: 9557)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-01-17 07:53:53 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"alanbisbal4@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "alanbisbal4@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (12.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "alanbisbal4@gmail.com"], ["encrypted_password", "$2a$12$.Y.YOh1EBsAcJAVqg0nTJewyfRxgA7y88P0arOw7oFgNkot5WnsiK"], ["created_at", "2021-01-17 10:53:54.334013"], ["updated_at", "2021-01-17 10:53:54.334013"]]
+  [1m[36mBook Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "books" WHERE "books"."title" = ? AND "books"."user_id" = ? LIMIT ?[0m  [["title", "Global"], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `create_book'
+  [1m[36mBook Create (0.6ms)[0m  [1m[32mINSERT INTO "books" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["title", "Global"], ["created_at", "2021-01-17 10:53:54.512198"], ["updated_at", "2021-01-17 10:53:54.512198"]]
+  ↳ app/models/user.rb:12:in `create_book'
+  [1m[36mTRANSACTION (36.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 613ms (ActiveRecord: 51.1ms | Allocations: 18063)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:53:54 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.8ms | Allocations: 6634)
+Completed 200 OK in 28ms (Views: 22.9ms | ActiveRecord: 0.3ms | Allocations: 8326)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-01-17 07:53:57 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (2.9ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/books/index.html.erb:14
+  Rendered books/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1115)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.1ms | Allocations: 7659)
+Completed 200 OK in 63ms (Views: 51.8ms | ActiveRecord: 3.0ms | Allocations: 9764)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-01-17 07:54:02 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 19ms (ActiveRecord: 0.1ms | Allocations: 1858)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:54:02 -0300
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 229)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:54:02 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1011)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.1ms | Allocations: 7642)
+Completed 200 OK in 25ms (Views: 22.5ms | ActiveRecord: 0.0ms | Allocations: 8232)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:54:07 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"alanbisbal3@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "alanbisbal3@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 476ms (ActiveRecord: 0.2ms | Allocations: 2285)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:54:08 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.7ms | Allocations: 6635)
+Completed 200 OK in 48ms (Views: 34.2ms | ActiveRecord: 0.2ms | Allocations: 8111)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-01-17 07:54:09 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/books/index.html.erb:14
+  Rendered books/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 709)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.5ms | Allocations: 7265)
+Completed 200 OK in 53ms (Views: 41.6ms | ActiveRecord: 0.2ms | Allocations: 8791)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2021-01-17 07:54:11 -0300
+Processing by BooksController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1287)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.1ms | Allocations: 7854)
+Completed 200 OK in 55ms (Views: 44.6ms | ActiveRecord: 0.1ms | Allocations: 9422)
+
+
+Started POST "/books" for 127.0.0.1 at 2021-01-17 07:54:15 -0300
+Processing by BooksController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"Global", "commit"=>"Save"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBook Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "books" WHERE "books"."user_id" = ? AND "books"."title" = ? LIMIT ?[0m  [["user_id", 3], ["title", "Global"], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/books_controller.rb:21:in `create'
+  [1m[36mBook Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "books" WHERE "books"."title" = ? AND "books"."user_id" = ? LIMIT ?[0m  [["title", "Global"], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21:in `create'
+  [1m[36mBook Create (0.5ms)[0m  [1m[32mINSERT INTO "books" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 3], ["title", "Global"], ["created_at", "2021-01-17 10:54:15.229031"], ["updated_at", "2021-01-17 10:54:15.229031"]]
+  ↳ app/controllers/books_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (125.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/books_controller.rb:21:in `create'
+Redirected to http://127.0.0.1:3000/books
+Completed 302 Found in 182ms (ActiveRecord: 126.1ms | Allocations: 8035)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-01-17 07:54:15 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/books/index.html.erb:14
+  Rendered books/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 772)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 7431)
+Completed 200 OK in 33ms (Views: 26.0ms | ActiveRecord: 0.3ms | Allocations: 8955)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2021-01-17 07:54:18 -0300
+Processing by BooksController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1111)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.8ms | Allocations: 7578)
+Completed 200 OK in 44ms (Views: 37.0ms | ActiveRecord: 0.1ms | Allocations: 9054)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-01-17 07:54:20 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 16ms (ActiveRecord: 0.2ms | Allocations: 1712)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:54:20 -0300
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 229)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:54:20 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1009)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.8ms | Allocations: 7630)
+Completed 200 OK in 52ms (Views: 50.6ms | ActiveRecord: 0.0ms | Allocations: 8220)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-01-17 07:54:24 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"alanbisbal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "alanbisbal@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 362ms (ActiveRecord: 0.1ms | Allocations: 2245)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-17 07:54:24 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 6648)
+Completed 200 OK in 53ms (Views: 44.8ms | ActiveRecord: 0.1ms | Allocations: 8124)
+
+
