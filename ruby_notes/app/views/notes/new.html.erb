@@ -8,13 +8,13 @@
     <%= form.text_field :title %><br>
 </div>
 <div>
+  <%= form.select :book_id, current_user.books.collect { |b| [b.title,b.id] } %>
+</div>
+<div>
   <%= form.label :content, "Content:" %><br>
   <%= form.text_area :content,{class:"md-textarea form-control",rows:16} %>
 </div>
 
-<div>
-  <%= form.select :book_id, current_user.books.collect { |b| [b.title,b.id] } %>
-</div>
 
 
   <%= form.submit "Save" ,{class:"btn btn-primary"} %>

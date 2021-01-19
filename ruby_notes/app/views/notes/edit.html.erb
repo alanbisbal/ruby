@@ -1,4 +1,4 @@
-EDIT BOOK
+<h1>Edit Note</h1>
 <%= form_for(@note) do |form| %>
 <div>
     <%= form.label :title, "Title:",{class:"card-title"} %><br>
@@ -12,7 +12,5 @@ EDIT BOOK
 <div>
   <%= form.select :book_id, current_user.books.collect { |b| [b.title,b.id] } %>
 </div>
-
-
   <%= form.submit "Save" %>
 <% end %>

@@ -11,21 +11,23 @@
   </head>
   <div class="container">
     <body>
-    <h1>Ruby Notes!</h1>
-
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+    
+      <h1> <a href="/">Ruby Notes!</a></h1>
 
      <% if user_signed_in? %>
-     <div>
-       <li>
+
          <p> Welcome <%= current_user.email =%>!
          <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
          <div>
            <%= link_to('My Books', books_path) %> <br>
+           <%= link_to "New Note", new_note_path %>
          </div>
-       </li>
-     </div>
+
      <% else %>
      <div>
        <li>
@@ -37,9 +39,7 @@
      </div>
      <% end %>
      <%= yield %>
-     <div>
-     <%= link_to 'Back',url_for(:back)%>
-     </div>
+
    </body>
  </div>
  </html>

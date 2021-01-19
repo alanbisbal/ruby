@@ -11,7 +11,7 @@ class BooksController < ApplicationController
       @book = current_user.books.find(params[:id])
       @notes = @book.notes
     else
-      redirect_to '/'
+      redirect_to '/', alert: "Book not found"
     end
   end
 
