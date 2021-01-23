@@ -6,6 +6,8 @@ ruby '2.7.1'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'redcarpet'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
