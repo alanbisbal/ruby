@@ -1,4 +1,4 @@
-<h1>Edit Note</h1>
+<h1><%= @note.book %> > <%= @note.title %> > Edit</h1>
 <%= form_for(@note) do |form| %>
 <div>
     <%= form.label :title, "Title:",{class:"card-title"} %><br>

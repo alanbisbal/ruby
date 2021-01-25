@@ -1,5 +1,10 @@
-<h1>Your Books</h1>
+<div>
+  <h1>Your Books</h1>
 
+  <h3>
+  <%= link_to "New book", new_book_path %>
+  </h3>
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -15,9 +20,9 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= link_to "Show", book %></td>
+        <% if not book.title == "Global" %>
         <td><%= link_to "Edit", edit_book_path(book) %></td>
 
-        <% if not book.title == "Global" %>
         <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
         <% end %>
 
@@ -27,5 +32,3 @@
 </table>
 
 <br>
-
-<%= link_to "New book", new_book_path %>

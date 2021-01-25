@@ -29,6 +29,9 @@ class BooksController < ApplicationController
   def edit
     if current_user.books.exists?(params[:id])
       @book = current_user.books.find(params[:id])
+      if @book.title == "Global"
+        redirect_to '/'
+      end
     else
       redirect_to '/'
     end
@@ -38,6 +41,9 @@ class BooksController < ApplicationController
     @books = current_user.books
     if @books.exists?(params[:id]) and !@books.exists?(title: params[:book][:title])
       @book = current_user.books.find(params[:id])
+      if @book.title == "Global"
+        redirect_to '/'
+      end
       @book.update(title: params[:book][:title])
       redirect_to '/books'
     else

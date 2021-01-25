@@ -16,18 +16,14 @@
           <%= msg %>
         </div>
       <% end %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <h1> <a href="/">Ruby Notes!</a></h1>
+
 
      <% if user_signed_in? %>
-
+      <div align="right">
          <p> Welcome <%= current_user.email =%>!
          <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
-         <div>
-           <%= link_to('My Books', books_path) %> <br>
-           <%= link_to "New Note", new_note_path %>
-         </div>
+      </div>
+
 
      <% else %>
      <div>
@@ -39,7 +35,21 @@
        </li>
      </div>
      <% end %>
-     <%= yield %>
+     <div align="center" >
+        <h1> <a href="/">
+          <%= image_tag "/images/logo.jpeg",:size => "400x100" %>
+
+        </a> </h1>
+
+        <% if user_signed_in? %>
+          <h3>
+            <%= link_to "Books", Book %>
+            <%= link_to "New Book", new_book_path %>
+            <%= link_to "New Note", new_note_path %>
+            </h3>
+        <% end %>
+     </div>
+    <%= yield %>
 
    </body>
  </div>
