@@ -17,4 +17,10 @@ class Book < ApplicationRecord
     ok
   end
 
+  def exportAll
+    for note in self.notes
+      note.export
+    end
+  end
+
 end
