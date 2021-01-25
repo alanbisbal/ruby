@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.where(user_id: current_user.id)
+    @books = current_user.books
   end
 
   #display the books of the authenticated user
@@ -11,7 +11,7 @@ class BooksController < ApplicationController
       @book = current_user.books.find(params[:id])
       @notes = @book.notes
     else
-      redirect_to '/', alert: "Book not found"
+      render(:file =>File.join(Rails.root,'public/403.html'), :status => 403, :layout => false)
     end
   end
 
