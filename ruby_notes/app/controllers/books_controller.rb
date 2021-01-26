@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  require 'download'
   def index
     @books = current_user.books
   end
