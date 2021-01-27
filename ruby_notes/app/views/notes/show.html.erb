@@ -11,5 +11,6 @@
 <% end %>
 <%= link_to "Edit", edit_note_path(@note) %>
 <%= link_to "Destroy", @note, method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to 'Download PDF',download_path(:note_id => @note.id,:type =>"Note"), :target => '_blank' %>
+
+<%= link_to "Export Note in PDF", download_note_path(:note_id => @note.id) %>
 <%= markdown(@note.content) %>

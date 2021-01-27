@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  require 'download'
+  require 'zip'
   def index
     @books = current_user.books
   end
@@ -63,6 +63,27 @@ class BooksController < ApplicationController
     end
     redirect_to '/books'
   # AGREGAR ELIMINACION EN CASCADA!
+  end
+
+  def download_notes
+    @notes = current_user.books.find(params[:book_id]).notes
+    stringio = Zip::OutputStream.write_buffer do |zio|
+      @notes.each do |coverage|
+        #create and add a text file for this record
+        zio.put_next_entry("#{coverage.id}_test.txt")
+        zio.write "#{coverage.title}!"
+        #create and add a pdf file for this record
+        dec_pdf = render_to_string :pdf => "#{coverage.id}_dec.pdf", :template => 'books/download', :locals => {coverage: coverage}
+        zio.put_next_entry("#{coverage.id}_dec.pdf")
+        zio << dec_pdf
+      end
+    end
+    # This is needed because we are at the end of the stream and
+    # will send zero bytes otherwise
+    stringio.rewind
+    #just using variable assignment for clarity here
+    binary_data = stringio.sysread
+    send_data(binary_data, :type => 'application/zip', :filename => "test_dec_page.zip")
   end
 
 

@@ -77,5 +77,12 @@ class NotesController < ApplicationController
     redirect_to '/books'
   end
 
-
+  def download
+       @note = Note.find(params[:note_id]) 
+       html = render_to_string(:action => :download, :layout => false)
+       pdf = WickedPdf.new.pdf_from_string(html)
+       send_data(pdf,
+           :filename    => "temp.pdf",
+           :disposition => 'attachment')
+    end
 end
