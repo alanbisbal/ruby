@@ -1,7 +1,6 @@
 class NotesController < ApplicationController
 
   def show
-    ##MODULARIZAR EN UN HELPER O CALL A METODO DE MODELO
     @books = current_user.books
     ok = false
     for book in @books
@@ -11,10 +10,8 @@ class NotesController < ApplicationController
         break
       end
     end
-    ##MODULARIZAR
-    if @note
-       @note
-    else
+    if !ok
+      flash.alert = "The note does not exist"
       redirect_to '/'
     end
   end
@@ -52,7 +49,6 @@ class NotesController < ApplicationController
         break
       end
     end
-    ##MODULARIZAR
     if @note
       @note.update(title: params[:note][:title],content:params[:note][:content], book_id: params[:note][:book_id])
     end

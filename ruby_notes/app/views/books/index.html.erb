@@ -19,7 +19,7 @@
       <tr>
         <td><%= link_to "#{book.title}", book %></td>
         <% if not book.title == "Global" %>
-        <td><%= link_to "Edit", edit_book_path(book) ,class: "btn btn-warning"%></td>
+        <td><%= link_to "Edit", edit_book_path(book) ,class: "btn btn-primary"%></td>
 
         <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure? All notes will be deleted" },class: "btn btn-danger" %></td>
         <% end %>

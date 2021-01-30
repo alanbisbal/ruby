@@ -1,10 +1,13 @@
 <%= wicked_pdf_stylesheet_link_tag 'downloader' %>
 <div class="some-div">
   <div class="some-other-div">
-    <p>
 
-       Title Note:<br>
-       <%= @note.title %><br>
+    Title Note:<br>
+    <div>
+      <%= @note.title, class: "card title"%><br>
+
+    </div>
+
 
       Content:<br>
 
@@ -12,6 +15,6 @@
         <br>
 
       View in markdown:<%= markdown(@note.content) %><br>
-    </p>
+
   </div>
 </div>

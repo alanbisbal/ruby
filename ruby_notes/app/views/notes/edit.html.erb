@@ -1,4 +1,7 @@
-<h1><%= @note.book %> > <%= @note.title %> > Edit</h1>
+<h1><%= link_to "#{@note.book.title}", @note.book %>
+  ->
+<%= link_to "#{@note}", @note.book %>
+  -> Edit</h1>
 <%= form_for(@note) do |form| %>
 <div>
     <%= form.label :title, "Title:",{class:"card-title"} %><br>

@@ -21,9 +21,8 @@ class BooksController < ApplicationController
       current_user.books.create(title: params[:title], user_id: current_user.id)
       redirect_to '/books'
     else
+      flash.alert = "The name is alredy in use"
       redirect_back(fallback_location: root_path)
-
-
     end
   end
 
@@ -44,6 +43,7 @@ class BooksController < ApplicationController
     if @books.exists?(params[:id]) and !@books.exists?(title: params[:book][:title])
       @book = current_user.books.find(params[:id])
       if @book.title == "Global"
+        flash.alert = "Cant update Global book"
         redirect_to '/'
       end
       @book.update(title: params[:book][:title])

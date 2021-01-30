@@ -1,3 +1,36 @@
+<div class="some-div">
+  <div class="some-other-div">
+    <div class="card title">
+    <h3>  Title Note:<br></h3>
+    </div>
+
+    <div class="container">
+      <h4><%= @note.title %><br></h4>
+    </div>
+    <hr>
+
+    <div class="card title">
+    <h3>  Content:<br></h3>
+    </div>
+
+    <div class="container">
+
+      <textarea name="name" rows="400" cols="120">
+
+        <%= @note.content %></textarea>
+    </div>
+
+        <br>
+    <hr>
+    <h3>View in markdown:</h3>
+
+    <div class="container">
+      <%= markdown(@note.content) %><br>
+    </div>
+  </div>
+</div>
+
+
   <h1> <%= link_to "#{@note.book.title}", @note.book %> -> <%= @note.title %> </h1>
 <hr>
 <%= form_for(@note) do |form| %>
