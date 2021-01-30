@@ -1,6 +1,13 @@
 <h1>New Book</h1>
+<div class="card w-75">
+  <div class="card-body">
 <%= form_with url: "/books", method: :post do |form| %>
-  <%= form.label :title, "Title:" %>
-  <%= form.text_field :title %>
-  <%= form.submit "Save" %>
+<div>
+    <%= form.label :title, "Title:",{class:"card-title"} %>
+    <%= form.text_field :title %><br>
+</div>
+<br>
+<%= form.submit "Save" ,class:"btn btn-primary"%>
 <% end %>
+</div>
+</div>

@@ -1,6 +1,11 @@
-<h1>Edit Book: <%= @book.title %></h1>
+<h1>Edit Book</h1>
+
+  <h3>
+   <%= link_to "#{@book.title}", @book %>
+  </h3>
+<br>
 <%= form_for(@book) do |form| %>
   <%= form.label :title, "Title:" %>
-  <%= form.text_field :title %>
-  <%= form.submit "Save" %>
+  <%= form.text_field :title %><br><br>
+  <%= form.submit "Save" ,class:"btn btn-primary" %>
 <% end %>

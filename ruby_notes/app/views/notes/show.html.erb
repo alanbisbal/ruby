@@ -1,16 +1,44 @@
-<h1> <%= @note.book %> > <%= @note.title %> </h1>
+  <h1> <%= link_to "#{@note.book.title}", @note.book %> -> <%= @note.title %> </h1>
+<hr>
 <%= form_for(@note) do |form| %>
 <div>
     <%= form.label :title, "Title:",{class:"card-title"} %><br>
-    <%= form.text_field :title ,{disabled:true}%><br>
+    <%= form.text_field :title, :readonly => true %><br>
 </div>
+<br>
 <div>
   <%= form.label :content, "Content:" %><br>
-  <%= form.text_area :content,{class:"md-textarea form-control",rows:16, disabled:true} %>
+  <%= form.text_area :content,{id:"InputTextArea", class:"md-textarea form-control",rows:16, readonly:true} %>
 </div>
 <% end %>
-<%= link_to "Edit", edit_note_path(@note) %>
-<%= link_to "Destroy", @note, method: :delete, data: { confirm: "Are you sure?" } %>
 
-<%= link_to "Export Note in PDF", download_note_path(:note_id => @note.id) %>
+<div>
+<hr>
+<%= link_to "Edit", edit_note_path(@note), class: "btn btn-primary"%>
+<%= link_to "PDF", download_note_path(:note_id => @note.id), class: "btn btn-success" %>
+<%= link_to "Destroy", @note, method: :delete, data: { confirm: "Are you sure?" },class: "btn btn-danger" %>
+</div>
+<hr>
+<div>
+<h3>View in Markdown</h3>
+<hr>
+</div>
 <%= markdown(@note.content) %>
+
+<script >
+  function resizeTextarea (id) {
+  var a = document.getElementById(id);
+  a.style.height = 'auto';
+  a.style.height = a.scrollHeight+'px';
+}
+
+function init() {
+  var a = document.getElementsByTagName('textarea');
+  for(var i=0,inb=a.length;i<inb;i++) {
+     if(a[i].getAttribute('data-resizable')=='true')
+      resizeTextarea(a[i].id);
+  }
+}
+
+addEventListener('DOMContentLoaded', init);
+  </script>

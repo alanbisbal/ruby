@@ -22,6 +22,8 @@ class BooksController < ApplicationController
       redirect_to '/books'
     else
       redirect_back(fallback_location: root_path)
+
+
     end
   end
 
@@ -33,7 +35,7 @@ class BooksController < ApplicationController
         redirect_to '/'
       end
     else
-      redirect_to '/'
+      render(:file =>File.join(Rails.root,'public/403.html'), :status => 403, :layout => false)
     end
   end
 
@@ -45,9 +47,10 @@ class BooksController < ApplicationController
         redirect_to '/'
       end
       @book.update(title: params[:book][:title])
-      redirect_to '/books'
+      redirect_to '/books/'
     else
-      redirect_back(fallback_location: root_path)
+      render(:file =>File.join(Rails.root,'public/403.html'), :status => 403, :layout => false)
+
     end
   end
 
@@ -59,10 +62,10 @@ class BooksController < ApplicationController
         @book.destroy
       end
     else
-      redirect_to '/'
+      render(:file =>File.join(Rails.root,'public/403.html'), :status => 403, :layout => false)
     end
     redirect_to '/books'
-  # AGREGAR ELIMINACION EN CASCADA!
+
   end
 
   def download_notes

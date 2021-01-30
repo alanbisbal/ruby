@@ -11,19 +11,17 @@
       <th scope="col">Title</th>
       <th scope="col"></th>
       <th scope="col"></th>
-      <th scope="col"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= book.title %></td>
-        <td><%= link_to "Show", book %></td>
+        <td><%= link_to "#{book.title}", book %></td>
         <% if not book.title == "Global" %>
-        <td><%= link_to "Edit", edit_book_path(book) %></td>
+        <td><%= link_to "Edit", edit_book_path(book) ,class: "btn btn-warning"%></td>
 
-        <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to "Destroy", book, method: :delete, data: { confirm: "Are you sure? All notes will be deleted" },class: "btn btn-danger" %></td>
         <% end %>
 
       </tr>

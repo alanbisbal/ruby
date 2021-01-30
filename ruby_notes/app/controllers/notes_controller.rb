@@ -78,7 +78,7 @@ class NotesController < ApplicationController
   end
 
   def download
-       @note = Note.find(params[:note_id]) 
+       @note = Note.find(params[:note_id])
        html = render_to_string(:action => :download, :layout => false)
        pdf = WickedPdf.new.pdf_from_string(html)
        send_data(pdf,
