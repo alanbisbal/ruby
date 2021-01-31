@@ -17,12 +17,15 @@ class BooksController < ApplicationController
 
   #create a new book for the authenticated user
   def create
-    if !current_user.books.exists?(title: params[:title])
-      current_user.books.create(title: params[:title], user_id: current_user.id)
-      redirect_to '/books'
-    else
+    if params[:title].blank?
+      flash.alert = "The title can't be blank"
+      redirect_back(fallback_location: root_path)
+    elsif current_user.books.exists?(title: params[:title])
       flash.alert = "The name is alredy in use"
       redirect_back(fallback_location: root_path)
+    else
+      current_user.books.create(title: params[:title], user_id: current_user.id)
+      redirect_to '/books'
     end
   end
 
@@ -39,8 +42,16 @@ class BooksController < ApplicationController
   end
 
   def update
+    if params[:book][:title].blank?
+      flash.alert = "The title can't be blank"
+      redirect_back(fallback_location: root_path)
+    elsif current_user.books.exists?(title: params[:book][:title])
+      flash.alert = "The name is alredy in use"
+      redirect_back(fallback_location: root_path)
+    else
+
     @books = current_user.books
-    if @books.exists?(params[:id]) and !@books.exists?(title: params[:book][:title])
+    if @books.exists?(params[:id])
       @book = current_user.books.find(params[:id])
       if @book.title == "Global"
         flash.alert = "Cant update Global book"
@@ -51,6 +62,7 @@ class BooksController < ApplicationController
     else
       render(:file =>File.join(Rails.root,'public/403.html'), :status => 403, :layout => false)
 
+    end
     end
   end
 
@@ -88,6 +100,5 @@ class BooksController < ApplicationController
     binary_data = stringio.sysread
     send_data(binary_data, :type => 'application/zip', :filename => "test_dec_page.zip")
   end
-
 
 end

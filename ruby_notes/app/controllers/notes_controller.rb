@@ -1,4 +1,7 @@
 class NotesController < ApplicationController
+  def index
+    redirect_to '/'
+  end
 
   def show
     @books = current_user.books
@@ -17,11 +20,20 @@ class NotesController < ApplicationController
   end
 
   def create
+    if params[:title].blank?
+      flash.alert = "The title can't be blank"
+      redirect_back(fallback_location: root_path)
+    elsif params[:content].blank?
+      flash.alert = "The content can't be empty"
+      redirect_back(fallback_location: root_path)
+    else
     current_user.books.find(params[:book_id]).notes.create(title: params[:title],content:params[:content], book_id: params[:book_id])
     redirect_to ( '/books/'+params[:book_id])
   end
+  end
 
   def edit
+
     @books = current_user.books
     ok = false
     for book in @books
@@ -40,6 +52,13 @@ class NotesController < ApplicationController
   end
 
   def update
+    if params[:note][:title].blank?
+      flash.alert = "The title can't be blank"
+      redirect_back(fallback_location: root_path)
+    elsif params[:note][:content].blank?
+      flash.alert = "The content can't be empty"
+      redirect_back(fallback_location: root_path)
+    else
     @books = current_user.books
     ok = false
     for book in @books
@@ -53,6 +72,7 @@ class NotesController < ApplicationController
       @note.update(title: params[:note][:title],content:params[:note][:content], book_id: params[:note][:book_id])
     end
     redirect_to ( '/books/'+params[:note][:book_id])
+  end
   end
 
   def destroy
