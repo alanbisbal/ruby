@@ -1,6 +1,5 @@
-## Documentacion for final user.
+## Document for final user.
 
-### Objetive.
   Ruby notes is simply a note manager online.
   This allows create books to save your notes.
   The notes may contain simple texts, or texts in Markdown. Later,
