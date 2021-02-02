@@ -1,24 +1,36 @@
-# README
+## Documentacion for final user.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Objetive.
+  Ruby notes is simply a note manager online.
+  This allows create books to save your notes.
+  The notes may contain simple texts, or texts in Markdown. Later,
+  you can download the notes in PDF format, and can also export all notes
+  of one book in ZIP format.
 
-Things you may want to cover:
 
-* Ruby version
+How to run:
+* Ruby version: Ruby '2.7.1'
 
-* System dependencies
+* Rails version: Rails '6.1.1'
 
-* Configuration
+* Puma
 
-* Database creation
+* You need install ruby and Rails.
+[Guide to install Ruby on Rails](https://guides.rubyonrails.org/v5.0/getting_started.html).
 
-* Database initialization
+* Then, type 'bundle install', to install the dependencies.
+```bash
+$ bundle install
+```
 
-* How to run the test suite
+* Type 'rails db:migrate' to create the database.
+```bash
+$ rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Now, with 'rails s' up the server
+```bash
+$ rails s
+```
+* Copy the url in the browser, for example:
+[http://127.0.0.1:3000](http://127.0.0.1:3000).

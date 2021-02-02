@@ -55516,3 +55516,25 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 124ms (Views: 119.1ms | ActiveRecord: 0.0ms | Allocations: 7862)
 
 
+Started GET "/" for 127.0.0.1 at 2021-02-02 19:07:28 -0300
+  [1m[35m (13.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.8ms | Allocations: 257)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 514.5ms | Allocations: 15659)
+Completed 200 OK in 581ms (Views: 548.3ms | ActiveRecord: 0.0ms | Allocations: 18344)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-02 19:12:01 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.8ms | Allocations: 6720)
+Completed 200 OK in 41ms (Views: 39.8ms | ActiveRecord: 0.0ms | Allocations: 7119)
+
+
