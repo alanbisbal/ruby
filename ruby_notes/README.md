@@ -14,8 +14,7 @@ How to run:
 
 * Puma
 
-* You need install ruby and Rails.
-[Guide to install Ruby on Rails](https://guides.rubyonrails.org/v5.0/getting_started.html).
+* First, install [Ruby on Rails](https://guides.rubyonrails.org/v5.0/getting_started.html).
 
 * Then, type 'bundle install', to install the dependencies.
 ```bash
