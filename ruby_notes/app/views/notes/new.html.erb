@@ -1,0 +1,24 @@
+<h1>New Note</h1>
+
+<div class="card w-75">
+  <div class="card-body">
+<%= form_with url: "/notes", method: :post do |form| %>
+<div >
+    <%= form.label :title, "Title:",{class:"card-title"} %><br>
+    <%= form.text_field :title, :maxlength => 255, :size => 100 %><br>
+</div>
+<br>
+<div>
+  <%= form.select :book_id, current_user.books.collect { |b| [b.title,b.id] } %>
+</div>
+<br>
+<div>
+  <%= form.label :content, "Content:" %><br>
+  <%= form.text_area :content,{maxlength:"65535",class:"md-textarea form-control",rows:16} %>
+</div>
+
+  <%= form.submit "Save" ,{class:"btn btn-primary"} %>
+  <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="some-div">
+  <div class="some-other-div">
+    <div class="card title">
+    <h3>  Title Note:<br></h3>
+    </div>
+
+    <div class="container">
+      <h4><%= @note.title %><br></h4>
+    </div>
+    <hr>
+
+    <div class="card title">
+    <h3>  Content:<br></h3>
+    </div>
+
+    <div class="container">
+
+      <textarea name="name" rows="400" cols="120">
+
+        <%= @note.content %></textarea>
+    </div>
+
+        <br>
+    <hr>
+    <h3>View in markdown:</h3>
+
+    <div class="container">
+      <%= markdown(@note.content) %><br>
+    </div>
+  </div>
+</div>
+
+
+  <h1> <%= link_to "#{@note.book.title}", @note.book %> -> <%= @note.title %> </h1>
+<hr>
+<%= form_for(@note) do |form| %>
+<div>
+    <%= form.label :title, "Title:",{class:"card-title"} %><br>
+    <%= form.text_field :title, :readonly => true %><br>
+</div>
+<br>
+<div>
+  <%= form.label :content, "Content:" %><br>
+  <%= form.text_area :content,{id:"InputTextArea", class:"md-textarea form-control",rows:16, readonly:true} %>
+</div>
+<% end %>
+
+<div>
+<hr>
+<%= link_to "Edit", edit_note_path(@note), class: "btn btn-primary"%>
+<%= link_to "PDF", download_note_path(:note_id => @note.id), class: "btn btn-success" %>
+<%= link_to "Destroy", @note, method: :delete, data: { confirm: "Are you sure?" },class: "btn btn-danger" %>
+</div>
+<hr>
+<div>
+<h3>View in Markdown</h3>
+<hr>
+</div>
+<%= markdown(@note.content) %>
+
+<script >
+  function resizeTextarea (id) {
+  var a = document.getElementById(id);
+  a.style.height = 'auto';
+  a.style.height = a.scrollHeight+'px';
+}
+
+function init() {
+  var a = document.getElementsByTagName('textarea');
+  for(var i=0,inb=a.length;i<inb;i++) {
+     if(a[i].getAttribute('data-resizable')=='true')
+      resizeTextarea(a[i].id);
+  }
+}
+
+addEventListener('DOMContentLoaded', init);
+  </script>

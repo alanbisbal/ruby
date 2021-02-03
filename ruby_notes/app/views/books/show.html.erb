@@ -1,0 +1,33 @@
+<div>
+<h1> <%= @book.title %> </h1>
+ <h3>  <%= link_to "New Note", new_note_path %> </h3>
+</div>
+
+
+
+<%= link_to 'Export all PDFS', downloadnotes_book_path(:book_id => @book.id) %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= link_to "#{note.title}", note %></td>
+        <td><%= link_to "Edit", edit_note_path(note),class: "btn btn-primary" %></td>
+        <td><%= link_to "Destroy", note,
+          method: :delete,class: "btn btn-danger",
+          data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

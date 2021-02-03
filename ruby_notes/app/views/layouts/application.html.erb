@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RubyNotes</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <div class="container">
+    <body>
+      <% flash.each do |type, msg| %>
+        <% if type == "alert" %>
+          <div class="alert alert-danger">
+            <%= msg %>
+          </div>
+        <% else %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+        <% end %>
+      <% end %>
+
+
+     <% if user_signed_in? %>
+      <div align="right">
+         <p> Welcome <%= current_user.email =%>!
+         <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
+      </div>
+
+
+     <% else %>
+     <div>
+       <li>
+         <%= link_to('Login', new_user_session_path) %>
+       </li>
+       <li>
+         <%= link_to('Register', new_user_registration_path) %>
+       </li>
+     </div>
+     <% end %>
+     <div align="center" >
+        <h1> <a href="/">
+          <%= image_tag "/images/logo.jpeg",:size => "400x100" %>
+
+        </a> </h1>
+
+        <% if user_signed_in? %>
+          <h3>
+            <%= link_to "Books", Book %> -
+            <%= link_to "New Book", new_book_path %> -
+            <%= link_to "New Note", new_note_path %>
+            </h3>
+        <% end %>
+     </div>
+    <%= yield %>
+
+   </body>
+ </div>
+ </html>

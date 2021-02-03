@@ -1,0 +1,14 @@
+<h1>New Book</h1>
+<div class="card w-75">
+  <div class="card-body">
+
+<%= form_with url: "/books", method: :post do |form| %>
+<div>
+    <%= form.label :title, "Title:",{class:"card-title"} %><br>
+    <%= form.text_field :title, :maxlength => 255, :size => 100 %><br>
+</div>
+<br>
+<%= form.submit "Save" ,class:"btn btn-primary"%>
+<% end %>
+</div>
+</div>

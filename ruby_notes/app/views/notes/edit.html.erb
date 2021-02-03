@@ -1,0 +1,19 @@
+<h1><%= link_to "#{@note.book.title}", @note.book %>
+  ->
+<%= link_to "#{@note}", @note.book %>
+  -> Edit</h1>
+<%= form_for(@note) do |form| %>
+<div>
+    <%= form.label :title, "Title:",{class:"card-title"} %><br>
+    <%= form.text_field :title,  :maxlength => 255, :size => 100  %><br>
+</div>
+<div>
+  <%= form.label :content, "Content:" %><br>
+  <%= form.text_area :content,{maxlength:"65535",class:"md-textarea form-control",rows:16} %>
+</div>
+
+<div>
+  <%= form.select :book_id, current_user.books.collect { |b| [b.title,b.id] } %>
+</div>
+  <%= form.submit "Save" %>
+<% end %>

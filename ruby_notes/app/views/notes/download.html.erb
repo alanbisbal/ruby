@@ -1,0 +1,20 @@
+<%= wicked_pdf_stylesheet_link_tag 'downloader' %>
+<div class="some-div">
+  <div class="some-other-div">
+
+    Title Note:<br>
+    <div>
+      <%= @note.title, class: "card title"%><br>
+
+    </div>
+
+
+      Content:<br>
+
+      <textarea name="name" rows="400" cols="150"><%= @note.content %></textarea>
+        <br>
+
+      View in markdown:<%= markdown(@note.content) %><br>
+
+  </div>
+</div>
