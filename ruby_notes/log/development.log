@@ -56322,3 +56322,216 @@ Processing by BooksController#new as HTML
 Completed 200 OK in 49ms (Views: 35.9ms | ActiveRecord: 0.1ms | Allocations: 10562)
 
 
+Started GET "/books/new" for 127.0.0.1 at 2021-02-03 01:54:22 -0300
+Started GET "/books/new" for 127.0.0.1 at 2021-02-03 01:54:22 -0300
+  [1m[35m (12.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/books/new" for 127.0.0.1 at 2021-02-03 01:54:22 -0300
+Processing by BooksController#new as HTML
+Processing by BooksController#new as HTML
+Processing by BooksController#new as HTML
+Started GET "/books/new" for 127.0.0.1 at 2021-02-03 01:54:23 -0300
+Processing by BooksController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (22.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/new.html.erb within layouts/application
+  Rendering layout layouts/application.html.erb
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1734)
+  Rendering layout layouts/application.html.erb
+  Rendering books/new.html.erb within layouts/application
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2715)
+  Rendered books/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1145)
+  Rendered books/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1145)
+Started GET "/books/new" for 127.0.0.1 at 2021-02-03 01:54:23 -0300
+Processing by BooksController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1146)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 282.7ms | Allocations: 55389)
+  Rendered layout layouts/application.html.erb (Duration: 300.6ms | Allocations: 61971)
+Completed 200 OK in 487ms (Views: 306.4ms | ActiveRecord: 0.6ms | Allocations: 81458)
+
+
+Completed 200 OK in 460ms (Views: 323.1ms | ActiveRecord: 0.8ms | Allocations: 79020)
+
+
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 140.7ms | Allocations: 32072)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 191ms (Views: 153.4ms | ActiveRecord: 0.8ms | Allocations: 40452)
+
+
+  Rendered layout layouts/application.html.erb (Duration: 367.3ms | Allocations: 76605)
+Completed 200 OK in 482ms (Views: 396.0ms | ActiveRecord: 6.1ms | Allocations: 91501)
+
+
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 403.8ms | Allocations: 79050)
+Completed 200 OK in 552ms (Views: 414.3ms | ActiveRecord: 23.4ms | Allocations: 94062)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2021-02-03 01:54:26 -0300
+Processing by NotesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering notes/new.html.erb within layouts/application
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/notes/new.html.erb:12:in `collect'
+  Rendered notes/new.html.erb within layouts/application (Duration: 159.1ms | Allocations: 9385)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 203.9ms | Allocations: 15915)
+Completed 200 OK in 224ms (Views: 206.7ms | ActiveRecord: 2.3ms | Allocations: 17952)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2021-02-03 01:54:49 -0300
+Processing by NotesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering notes/new.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/notes/new.html.erb:12:in `collect'
+  Rendered notes/new.html.erb within layouts/application (Duration: 10.4ms | Allocations: 3394)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.0ms | Allocations: 9900)
+Completed 200 OK in 48ms (Views: 38.0ms | ActiveRecord: 0.3ms | Allocations: 11380)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-02-03 01:54:56 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 81ms (ActiveRecord: 0.1ms | Allocations: 4005)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-03 01:54:56 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.0ms | Allocations: 143)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.4ms | Allocations: 6834)
+Completed 200 OK in 52ms (Views: 48.9ms | ActiveRecord: 0.0ms | Allocations: 7880)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-03 01:55:55 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 141)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.4ms | Allocations: 7443)
+Completed 200 OK in 62ms (Views: 60.8ms | ActiveRecord: 0.0ms | Allocations: 8635)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-02-03 01:55:57 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 15.8ms | Allocations: 605)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 99.3ms | Allocations: 2706)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 120.3ms | Allocations: 9295)
+Completed 200 OK in 281ms (Views: 123.6ms | ActiveRecord: 0.0ms | Allocations: 13015)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-02-03 01:56:00 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"alanbisbal@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "alanbisbal@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 522ms (ActiveRecord: 0.3ms | Allocations: 4549)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-03 01:56:00 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:27
+  Rendered layout layouts/application.html.erb (Duration: 119.1ms | Allocations: 11990)
+Completed 500 Internal Server Error in 122ms (ActiveRecord: 0.2ms | Allocations: 12365)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `edit_user_session_path' for #<ActionView::Base:0x0000000000b4f0>
+Did you mean?  new_user_session_path
+               edit_user_password_path):
+    27:      <% if user_signed_in? %>
+    28:       <div align="right">
+    29:          <p> Welcome <%= current_user.email =%>!
+    30:          <%= link_to('Edit', edit_user_session_path) %> </p>
+    31:          <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
+    32:       </div>
+    33: 
+  
+app/views/layouts/application.html.erb:30
+Started GET "/" for 127.0.0.1 at 2021-02-03 01:56:34 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 141)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:27
+  Rendered layout layouts/application.html.erb (Duration: 152.9ms | Allocations: 12781)
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 0.2ms | Allocations: 14058)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `esdit_user_session_path' for #<ActionView::Base:0x0000000000b978>
+Did you mean?  destroy_user_session_path):
+    27:      <% if user_signed_in? %>
+    28:       <div align="right">
+    29:          <p> Welcome <%= current_user.email =%>!
+    30:          <%= link_to('Edit', esdit_user_session_path) %> </p>
+    31:          <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </p>
+    32:       </div>
+    33: 
+  
+app/views/layouts/application.html.erb:30
+Started GET "/" for 127.0.0.1 at 2021-02-03 01:58:38 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 141)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:27
+  Rendered layout layouts/application.html.erb (Duration: 49.3ms | Allocations: 8199)
+Completed 200 OK in 62ms (Views: 58.1ms | ActiveRecord: 0.1ms | Allocations: 9416)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-02-03 01:58:40 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 19ms (ActiveRecord: 0.1ms | Allocations: 1859)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-03 01:58:40 -0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 6715)
+Completed 200 OK in 24ms (Views: 23.4ms | ActiveRecord: 0.0ms | Allocations: 7112)
+
+
