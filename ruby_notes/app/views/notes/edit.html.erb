@@ -5,7 +5,7 @@
 <%= form_for(@note) do |form| %>
 <div>
     <%= form.label :title, "Title:",{class:"card-title"} %><br>
-    <%= form.text_field :title %><br>
+    <%= form.text_field :title,  :maxlength => 255, :size => 100  %><br>
 </div>
 <div>
   <%= form.label :content, "Content:" %><br>
