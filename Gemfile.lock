@@ -13,7 +13,7 @@ GEM
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     iniparser (1.0.1)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     logutils (0.6.1)
     markdown (1.2.0)
@@ -26,8 +26,6 @@ GEM
     props (1.2.0)
       iniparser (>= 0.1.0)
     rexml (3.2.4)
-    ruby-enum (0.8.0)
-      i18n
     rubyzip (2.3.0)
     textutils (1.4.0)
       activesupport
