@@ -25,9 +25,7 @@ GEM
       tty-color (~> 0.5)
     props (1.2.0)
       iniparser (>= 0.1.0)
-    rexml (3.2.4)
-    ruby-enum (0.8.0)
-      i18n
+    rexml (3.2.5)
     rubyzip (2.3.0)
     textutils (1.4.0)
       activesupport
